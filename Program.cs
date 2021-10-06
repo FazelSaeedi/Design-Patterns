@@ -1,5 +1,6 @@
 ﻿using Design_Patterns.Structural.Bridge;
 using Design_Patterns.Structural.Decorator;
+using Design_Patterns.Structural.Facade;
 using System;
 
 namespace Design_Patterns
@@ -12,8 +13,9 @@ namespace Design_Patterns
             var structuralDesignPatterns = new StructuralDesignPatternsExamples();
 
             structuralDesignPatterns.Run_Decorator_Example();
-
             structuralDesignPatterns.Run_Bridge_Example();
+            structuralDesignPatterns.Run_Facade_Example();
+
         }
        
     }
@@ -86,6 +88,14 @@ namespace Design_Patterns
             email.Send();
 
         }
+
+        public void Run_Facade_Example()
+        {
+            Console.WriteLine("Facade pattern demo");
+            CarFacade carFacade = new CarFacade();
+            carFacade.AssembleCar();
+        }
+
     }
     
 }
