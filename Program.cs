@@ -1,4 +1,5 @@
-﻿using Design_Patterns.Structural.Decorator;
+﻿using Design_Patterns.Structural.Bridge;
+using Design_Patterns.Structural.Decorator;
 using System;
 
 namespace Design_Patterns
@@ -12,6 +13,7 @@ namespace Design_Patterns
 
             structuralDesignPatterns.Run_Decorator_Example();
 
+            structuralDesignPatterns.Run_Bridge_Example();
         }
        
     }
@@ -20,7 +22,7 @@ namespace Design_Patterns
         public void Run_Decorator_Example()
         {
             
-            Console.Title = "Decorator pattern demo";
+            Console.WriteLine("Decorator pattern demo");
             MarutiCar mCar = new MarutiCar();
             Console.WriteLine("{0} {1} Regular price: {2}", mCar.GetBrand(), mCar.GetModel(), mCar.GetPrice());
 
@@ -37,5 +39,53 @@ namespace Design_Patterns
             Console.WriteLine("{0} {1} Holi price: {2} after discount of {3} percent", mCar.GetBrand(), mCar.GetModel(), hOffer.NewPrice(), hOffer.PercentDiscount);
 
         }
+
+        public void Run_Bridge_Example()
+        {
+            Console.WriteLine("Bridge pattern demo");
+            
+            IEmailSender webService = new WebServiceEmailSender();
+            IEmailSender wcf = new WCFEmailSender();
+            IEmailSender webApi = new WebAPIEmailSender();
+
+            
+            //System Email 
+            Email email = new SystemEmail();
+            email.Subject = "Test Message";
+            email.Body = "Hi there, This is a Test Message from System";
+
+
+            // ----------------------------------------------------------------------
+            email.MessageSender = webService;
+            email.Send();
+
+
+            email.MessageSender = wcf;
+            email.Send();
+
+
+            email.MessageSender = webApi;
+            email.Send();
+
+
+            // User Email ---------------------------------------------------------- 
+            
+            email = new UserEmail();
+            email.Subject = "Test Message";
+            email.Body = "Hi there, This is a Test Message from Prakash";
+
+            email.MessageSender = webApi;
+            email.Send();
+
+
+            email.MessageSender = wcf;
+            email.Send();
+
+
+            email.MessageSender = webApi;
+            email.Send();
+
+        }
     }
+    
 }
