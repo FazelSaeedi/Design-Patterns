@@ -1,7 +1,9 @@
 ﻿using Design_Patterns.Structural.Bridge;
 using Design_Patterns.Structural.Decorator;
 using Design_Patterns.Structural.Facade;
+using Design_Patterns.Structural.Proxy;
 using System;
+using System.IO;
 
 namespace Design_Patterns
 {
@@ -15,6 +17,7 @@ namespace Design_Patterns
             structuralDesignPatterns.Run_Decorator_Example();
             structuralDesignPatterns.Run_Bridge_Example();
             structuralDesignPatterns.Run_Facade_Example();
+            structuralDesignPatterns.Run_Proxy_Exampple();
 
         }
        
@@ -96,6 +99,22 @@ namespace Design_Patterns
             carFacade.AssembleCar();
         }
 
+        public void Run_Proxy_Exampple()
+        {
+            Console.WriteLine("Proxy pattern demo");
+            IFilesService filesService = new FilesServicesProxy();
+            filesService.WritePersonInFile("c:\\myfakepath\\a.txt", "Fazel", "Saeedi", 26);
+
+            var directory = filesService.GetDirectoryInfo("d:\\myrightpath\\");
+            var fileName = Path.Combine(directory.FullName, "dotnettips.txt");
+
+            filesService.WritePersonInFile(fileName, "fa", "Saeedi", 26);
+            filesService.WritePersonInFile(fileName, "Fazel", "Saeedi", 12);
+            filesService.WritePersonInFile(fileName, "Fazel", "Saeedi", 26);
+
+            filesService.DeleteFile("c:\\myfakefile.txt");
+            filesService.DeleteFile(fileName);
+        }
     }
     
 }
