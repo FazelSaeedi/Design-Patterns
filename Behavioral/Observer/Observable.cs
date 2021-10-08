@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Design_Patterns.Behavioral.Observer
 {
@@ -8,8 +9,15 @@ namespace Design_Patterns.Behavioral.Observer
 
         public void Attach(Observer observer)
         {
-            _observers.Add(observer);
+            if(!_observers.Contains(observer))
+                _observers.Add(observer);
         }
+
+        public void AttachList(List<Observer> observers)
+        {
+            _observers.AddRange(observers?.Except(_observers));
+        }
+
         public void Dettach(Observer observer)
         {
             _observers.Remove(observer);

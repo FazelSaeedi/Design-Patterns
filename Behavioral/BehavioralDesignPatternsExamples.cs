@@ -19,9 +19,13 @@ namespace Design_Patterns.Behavioral
 
 
             var switchKey = new Switch();
-            switchKey.Attach(greenLed);
-            switchKey.Attach(redLed);
-            switchKey.Attach(blueLed);
+
+            // Refactoring ...
+            // switchKey.Attach(greenLed);
+            // switchKey.Attach(redLed);
+            // switchKey.Attach(blueLed);
+
+            switchKey.AttachList(new List<Observer.Observer> { greenLed , redLed , blueLed });
 
 
             switchKey.ChangeState = true;
