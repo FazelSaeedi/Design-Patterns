@@ -17,7 +17,7 @@ namespace Design_Patterns
             structuralDesignPatterns.Run_Bridge_Example();
             structuralDesignPatterns.Run_Facade_Example();
             structuralDesignPatterns.Run_Proxy_Exampple();
-
+            structuralDesignPatterns.Run_Adapter_Example();
 
             // Behavioral design patterns -----------------------------------------------
 

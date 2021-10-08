@@ -1,4 +1,5 @@
-﻿using Design_Patterns.Structural.Bridge;
+﻿using Design_Patterns.Structural.Adapter;
+using Design_Patterns.Structural.Bridge;
 using Design_Patterns.Structural.Decorator;
 using Design_Patterns.Structural.Facade;
 using Design_Patterns.Structural.Proxy;
@@ -103,6 +104,26 @@ namespace Design_Patterns.Structural
 
             filesService.DeleteFile("c:\\myfakefile.txt");
             filesService.DeleteFile(fileName);
+        }
+        
+        public void Run_Adapter_Example()
+        {
+            Console.WriteLine("Adapter pattern demo");
+            EmployeeDao dao = new EmployeeDao();
+
+
+            // dao.save(new Employee()); // it is true but in OOP DTo should be seperate Entity
+            //dao.save(EmployeeDto()); // Error
+
+
+            var employeeDto = new EmployeeDto();
+            employeeDto.id = BitConverter.ToInt64(Guid.NewGuid().ToByteArray(), 0);
+            employeeDto.firstName = "Fazel";
+            employeeDto.lastName = "Saeedi";
+            employeeDto.code = "4585-3252";
+
+            dao.save(new EmployeeDtoAdapter(employeeDto));
+
         }
     }
 }
