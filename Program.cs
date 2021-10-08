@@ -24,7 +24,7 @@ namespace Design_Patterns
             var behavioralDesignPatterns = new BehavioralDesignPatternsExamples();
 
             behavioralDesignPatterns.Run_Observer_Example();
-
+            behavioralDesignPatterns.Run_Strategy_Example();
 
         }
        
