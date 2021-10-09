@@ -18,6 +18,7 @@ namespace Design_Patterns
             structuralDesignPatterns.Run_Facade_Example();
             structuralDesignPatterns.Run_Proxy_Exampple();
             structuralDesignPatterns.Run_Adapter_Example();
+            structuralDesignPatterns.Run_Composite_Example();
 
             // Behavioral design patterns -----------------------------------------------
 
@@ -25,7 +26,7 @@ namespace Design_Patterns
 
             behavioralDesignPatterns.Run_Observer_Example();
             behavioralDesignPatterns.Run_Strategy_Example();
-
+            
         }
        
     }

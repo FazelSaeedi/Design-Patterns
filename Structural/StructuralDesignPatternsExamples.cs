@@ -1,5 +1,6 @@
 ﻿using Design_Patterns.Structural.Adapter;
 using Design_Patterns.Structural.Bridge;
+using Design_Patterns.Structural.Composite;
 using Design_Patterns.Structural.Decorator;
 using Design_Patterns.Structural.Facade;
 using Design_Patterns.Structural.Proxy;
@@ -124,6 +125,47 @@ namespace Design_Patterns.Structural
 
             dao.save(new EmployeeDtoAdapter(employeeDto));
 
+        }
+
+        public void Run_Composite_Example()
+        {
+            CEmployee Rahul = new CEmployee { EmpID = 1, Name = "Rahul" };
+
+            CEmployee Amit = new CEmployee { EmpID = 2, Name = "Amit" };
+            CEmployee Mohan = new CEmployee { EmpID = 3, Name = "Mohan" };
+
+            Rahul.AddSubordinate(Amit);
+            Rahul.AddSubordinate(Mohan);
+
+            CEmployee Rita = new CEmployee { EmpID = 4, Name = "Rita" };
+            CEmployee Hari = new CEmployee { EmpID = 5, Name = "Hari" };
+
+            Amit.AddSubordinate(Rita);
+            Amit.AddSubordinate(Hari);
+
+            CEmployee Kamal = new CEmployee { EmpID = 6, Name = "Kamal" };
+            CEmployee Raj = new CEmployee { EmpID = 7, Name = "Raj" };
+
+            Contractor Sam = new Contractor { EmpID = 8, Name = "Sam" };
+            Contractor tim = new Contractor { EmpID = 9, Name = "Tim" };
+
+            Mohan.AddSubordinate(Kamal);
+            Mohan.AddSubordinate(Raj);
+            Mohan.AddSubordinate(Sam);
+            Mohan.AddSubordinate(tim);
+
+            Console.WriteLine("EmpID={0}, Name={1}", Rahul.EmpID, Rahul.Name);
+
+            foreach (CEmployee manager in Rahul)
+            {
+                Console.WriteLine("\n EmpID={0}, Name={1}", manager.EmpID, manager.Name);
+                
+                 // foreach (CEmployee employee in manager)
+                 // {
+                 //     Console.WriteLine(" \t EmpID={0}, Name={1}", employee.EmpID, employee.Name);
+                 // }
+            }
+            Console.ReadKey();
         }
     }
 }
