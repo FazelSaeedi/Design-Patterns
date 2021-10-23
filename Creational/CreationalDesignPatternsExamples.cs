@@ -54,5 +54,21 @@ namespace Design_Patterns.Creational
                 Console.WriteLine(person);                                      
         }
 
+        public void Run_Facets_Builder()
+        {
+             var pb = new Design_Patterns.Creational.Builder.Faceted_Builder.PersonBuilder();
+
+                    Design_Patterns.Creational.Builder.Faceted_Builder.Person person = pb
+                                .Lives
+                                .At("123 London Road")
+                                .In("London")
+                                .WithPostcode("SW12BC")
+                                .Works
+                                .At("Fabrikam")
+                                .AsA("Engineer")
+                                .Earning(123000);
+
+                    Console.WriteLine(person);
+        }
     }
 }
