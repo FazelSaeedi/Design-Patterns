@@ -2,6 +2,7 @@ using System;
 using Design_Patterns.Creational.Builder.Builder;
 using Design_Patterns.Creational.Builder.LifeWithoutBuilder;
 using Design_Patterns.Creational.Builder.Recursive_Generic_Builder;
+using Design_Patterns.Creational.Builder.Stepwise_Builder;
 
 namespace Design_Patterns.Creational
 {
@@ -31,6 +32,15 @@ namespace Design_Patterns.Creational
 
             Console.WriteLine(P.ToString());                
             
+        }
+
+        public void Run_Stepwise_Builder()
+        {
+                var car = CarBuilder.Create()
+                        .OfType(CarType.Crossover)
+                        .WithWheels(18)
+                        .Build();
+                    Console.WriteLine(car);        
         }
     }
 }
