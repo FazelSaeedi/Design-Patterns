@@ -1,6 +1,7 @@
 using System;
 using Design_Patterns.Creational.Builder.Builder;
 using Design_Patterns.Creational.Builder.LifeWithoutBuilder;
+using Design_Patterns.Creational.Builder.Recursive_Generic_Builder;
 
 namespace Design_Patterns.Creational
 {
@@ -18,6 +19,18 @@ namespace Design_Patterns.Creational
                 .AddChild("li" , "world");
 
             Console.WriteLine(builder.ToString());
+        }
+
+        
+        public void Run_Recursive_Generic_Builder()
+        {
+            var P = Person.New
+                    .Called("fazel")
+                    .WorksAsA("USA")
+                    .Build();
+
+            Console.WriteLine(P.ToString());                
+            
         }
     }
 }
