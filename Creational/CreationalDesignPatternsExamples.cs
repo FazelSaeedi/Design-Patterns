@@ -28,6 +28,8 @@ namespace Design_Patterns.Creational
             var P = Person.New
                     .Called("fazel")
                     .WorksAsA("USA")
+                    .Phone("090366285660")
+                    .WorkPhone("02136250123")
                     .Build();
 
             Console.WriteLine(P.ToString());                
