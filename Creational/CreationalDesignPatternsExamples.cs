@@ -41,6 +41,7 @@ namespace Design_Patterns.Creational
                 var car = CarBuilder.Create()
                         .OfType(CarType.Crossover)
                         .WithWheels(18)
+                        .WithDoorNumber(2)
                         .Build();
                 
                 Console.WriteLine(car);        
