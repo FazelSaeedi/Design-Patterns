@@ -37,6 +37,7 @@ namespace Design_Patterns
             creationalDesignPatterns.Run_Second_Html_Builder();
             creationalDesignPatterns.Run_Recursive_Generic_Builder();
             creationalDesignPatterns.Run_Stepwise_Builder();
+            creationalDesignPatterns.Run_Functional_Builder();
         }
        
     }

@@ -40,7 +40,19 @@ namespace Design_Patterns.Creational
                         .OfType(CarType.Crossover)
                         .WithWheels(18)
                         .Build();
-                    Console.WriteLine(car);        
+                
+                Console.WriteLine(car);        
         }
+
+        public void Run_Functional_Builder()
+        {
+                var person = new Design_Patterns.Creational.Builder.Functional_Builder.PersonBuilder()
+                              .Called("fazel")
+                              .Position("tehran")
+                              .Build();
+
+                Console.WriteLine(person);                                      
+        }
+
     }
 }
