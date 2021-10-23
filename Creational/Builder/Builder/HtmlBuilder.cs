@@ -11,10 +11,11 @@ namespace Design_Patterns.Creational.Builder.Builder
     }
 
     // not fluent
-    public void AddChild(string childName, string childText)
+    public HtmlBuilder AddChild(string childName, string childText)
     {
       var e = new HtmlElement(childName, childText);
       root.Elements.Add(e);
+      return this;
     }
 
     public HtmlBuilder AddChildFluent(string childName, string childText)

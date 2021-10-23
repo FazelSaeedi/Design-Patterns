@@ -13,9 +13,9 @@ namespace Design_Patterns.Creational
 
         public void Run_Second_Html_Builder()
         {
-            var builder = new HtmlBuilder("ul");
-            builder.AddChild("li" , "hello");
-            builder.AddChild("li" , "world");
+            var builder = new HtmlBuilder("ul")
+                .AddChild("li" , "hello") // this is fluent interface => each method return type of class
+                .AddChild("li" , "world");
 
             Console.WriteLine(builder.ToString());
         }
