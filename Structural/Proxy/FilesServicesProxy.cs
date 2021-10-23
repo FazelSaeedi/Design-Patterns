@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Reflection;
+using System;
 using System.IO;
 
 namespace Design_Patterns.Structural.Proxy
