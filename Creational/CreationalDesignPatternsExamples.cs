@@ -52,6 +52,7 @@ namespace Design_Patterns.Creational
                 var person = new Design_Patterns.Creational.Builder.Functional_Builder.PersonBuilder()
                               .Called("fazel")
                               .Position("tehran")
+                              .Phone("09366285660")
                               .Build();
 
                 Console.WriteLine(person);                                      
@@ -63,13 +64,13 @@ namespace Design_Patterns.Creational
 
                     Design_Patterns.Creational.Builder.Faceted_Builder.Person person = pb
                                 .Lives
-                                .At("123 London Road")
-                                .In("London")
-                                .WithPostcode("SW12BC")
+                                    .At("123 London Road")
+                                    .In("London")
+                                    .WithPostcode("SW12BC")
                                 .Works
-                                .At("Fabrikam")
-                                .AsA("Engineer")
-                                .Earning(123000);
+                                    .At("Fabrikam")
+                                    .AsA("Engineer")
+                                    .Earning(123000);
 
                     Console.WriteLine(person);
         }
