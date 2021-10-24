@@ -39,6 +39,9 @@ namespace Design_Patterns
             creationalDesignPatterns.Run_Stepwise_Builder();
             creationalDesignPatterns.Run_Functional_Builder();
             creationalDesignPatterns.Run_Facets_Builder();
+
+
+            creationalDesignPatterns.Run_Factory_method_Example();
         }
        
     }

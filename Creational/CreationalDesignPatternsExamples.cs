@@ -1,8 +1,10 @@
+using System.Drawing;
 using System;
 using Design_Patterns.Creational.Builder.Builder;
 using Design_Patterns.Creational.Builder.LifeWithoutBuilder;
 using Design_Patterns.Creational.Builder.Recursive_Generic_Builder;
 using Design_Patterns.Creational.Builder.Stepwise_Builder;
+using Design_Patterns.Creational.Factories;
 
 namespace Design_Patterns.Creational
 {
@@ -73,6 +75,27 @@ namespace Design_Patterns.Creational
                                     .Earning(123000);
 
                     Console.WriteLine(person);
+        }
+
+        public void Run_Factory_method_Example()
+        {
+
+            // when we can use from below method that we implement NewCartesianPoint & NewPolarPoint
+            // in pointt class
+
+            //var point = Pointt.NewCartesianPoint(1.0 , Math.PI / 2);
+            //Console.WriteLine(point);
+
+
+            //point = Pointt.NewPolarPoint(1.0 , 15);
+            //Console.WriteLine(point);
+
+
+
+            // instead of up method we create a PointFactory Class and use it 
+            var point = PointFactory.NewPolarPoint(1.0 , Math.PI / 2);
+            Console.WriteLine(point);
+            
         }
     }
 }
