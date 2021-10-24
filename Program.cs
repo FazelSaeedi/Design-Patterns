@@ -44,6 +44,8 @@ namespace Design_Patterns
             creationalDesignPatterns.Run_Factory_Method_Example();
             creationalDesignPatterns.Run_Inner_Factory_Method_Example();
             creationalDesignPatterns.Run_Abstract_Factory_Example();
+            
+            creationalDesignPatterns.Run_Prototype_Cloneable_Is_Bad();
         }
        
     }

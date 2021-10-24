@@ -129,5 +129,25 @@ namespace Design_Patterns.Creational
             machine.MakeDrink(HotDrinkMachine.AvailableDrink.Tea , 100).Consume();
 
         }
+
+        public void Run_Prototype_Cloneable_Is_Bad()
+        {
+            var john = new Design_Patterns.Creational.Prototype.Person(
+                new []{"John", "Smith"},
+                new Design_Patterns.Creational.Prototype.Address("London Road", 123
+            ));
+
+            var jane = (Design_Patterns.Creational.Prototype.Person)john.Clone();
+            jane.Address.HouseNumber = 321; // oops, John is now at 321
+
+            // this doesn't work
+            //var jane = john;
+
+            // but clone is typically shallow copy
+            jane.Names[0] = "Jane";
+
+            Console.WriteLine(john);
+            Console.WriteLine(jane);
+        }
     }
 }
