@@ -6,6 +6,7 @@ using Design_Patterns.Creational.Builder.Recursive_Generic_Builder;
 using Design_Patterns.Creational.Builder.Stepwise_Builder;
 using Design_Patterns.Creational.Factories;
 using Design_Patterns.Creational.Factories.Inner_Factory_Method;
+using Design_Patterns.Creational.Abstract_Factory;
 
 namespace Design_Patterns.Creational
 {
@@ -111,6 +112,16 @@ namespace Design_Patterns.Creational
 
             var originPoint = Pointtt.origin();
             
+        }
+
+        public void Run_Abstract_Factory_Example()
+        {
+            var machine = new HotDrinkMachine();            
+            var drink = machine.MakeDrink(HotDrinkMachine.AvailableDrink.Tea , 100);
+            drink.Consume();
+
+            machine.MakeDrink(HotDrinkMachine.AvailableDrink.Coffee , 2000).Consume();
+
         }
     }
 }
