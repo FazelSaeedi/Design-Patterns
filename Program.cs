@@ -41,7 +41,8 @@ namespace Design_Patterns
             creationalDesignPatterns.Run_Facets_Builder();
 
 
-            creationalDesignPatterns.Run_Factory_method_Example();
+            creationalDesignPatterns.Run_Factory_Method_Example();
+            creationalDesignPatterns.Run_Inner_Factory_Method_Example();
         }
        
     }

@@ -5,6 +5,7 @@ using Design_Patterns.Creational.Builder.LifeWithoutBuilder;
 using Design_Patterns.Creational.Builder.Recursive_Generic_Builder;
 using Design_Patterns.Creational.Builder.Stepwise_Builder;
 using Design_Patterns.Creational.Factories;
+using Design_Patterns.Creational.Factories.Inner_Factory_Method;
 
 namespace Design_Patterns.Creational
 {
@@ -76,7 +77,7 @@ namespace Design_Patterns.Creational
                     Console.WriteLine(person);
         }
 
-        public void Run_Factory_method_Example()
+        public void Run_Factory_Method_Example()
         {
 
             // when we can use from below method that we implement NewCartesianPoint & NewPolarPoint
@@ -95,6 +96,21 @@ namespace Design_Patterns.Creational
             var point = PointFactory.NewPolarPoint(1.0 , Math.PI / 2);
             Console.WriteLine(point);
 
+        }
+    
+        public void Run_Inner_Factory_Method_Example()
+        {
+            var point = Pointtt.Factory.NewPolarPoint(1.0 , Math.PI / 2 );
+            Console.WriteLine(point);
+
+
+            // in ravesh equvalent e ba => var originPoint = new Point() 
+            // chon private e nmishe new Point konim
+
+            //new Pointtt();  /// -> errorr
+
+            var originPoint = Pointtt.origin();
+            
         }
     }
 }
