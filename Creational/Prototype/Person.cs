@@ -2,49 +2,50 @@ using System;
 
 namespace Design_Patterns.Creational.Prototype
 {
-    // ICloneable is ill-specified
-
-  public class Address : ICloneable
+    public class Address
   {
-    public readonly string StreetName;
-    public int HouseNumber;
+    public string StreetAddress, City, Country;
 
-    public Address(string streetName, int houseNumber)
+    public Address(string streetAddress, string city, string country)
     {
-      StreetName = streetName;
-      HouseNumber = houseNumber;
+      StreetAddress = streetAddress ?? throw new ArgumentNullException(paramName: nameof(streetAddress));
+      City = city ?? throw new ArgumentNullException(paramName: nameof(city));
+      Country = country ?? throw new ArgumentNullException(paramName: nameof(country));
+    }
+
+    public Address(Address other)
+    {
+      StreetAddress = other.StreetAddress;
+      City = other.City;
+      Country = other.Country;
     }
 
     public override string ToString()
     {
-      return $"{nameof(StreetName)}: {StreetName}, {nameof(HouseNumber)}: {HouseNumber}";
-    }
-
-    public object Clone()
-    {
-      return new Address(StreetName, HouseNumber);
+      return $"{nameof(StreetAddress)}: {StreetAddress}, {nameof(City)}: {City}, {nameof(Country)}: {Country}";
     }
   }
 
-  public class Person : ICloneable
+  public class Employee
   {
-    public readonly string[] Names;
-    public readonly Address Address;
+    public string Name;
+    public Address Address;
 
-    public Person(string[] names, Address address)
+    public Employee(string name, Address address)
     {
-      Names = names;
-      Address = address;
+      Name = name ?? throw new ArgumentNullException(paramName: nameof(name));
+      Address = address ?? throw new ArgumentNullException(paramName: nameof(address));
+    }
+
+    public Employee(Employee other)
+    {
+      Name = other.Name;
+      Address = new Address(other.Address);
     }
 
     public override string ToString()
     {
-      return $"{nameof(Names)}: {string.Join(",", Names)}, {nameof(Address)}: {Address}";
-    }
-
-    public object Clone()
-    {
-      return new Person(Names, Address);
+      return $"{nameof(Name)}: {Name}, {nameof(Address)}: {Address}";
     }
   }
 

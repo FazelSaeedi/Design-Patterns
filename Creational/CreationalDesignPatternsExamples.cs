@@ -132,22 +132,15 @@ namespace Design_Patterns.Creational
 
         public void Run_Prototype_Cloneable_Is_Bad()
         {
-            var john = new Design_Patterns.Creational.Prototype.Person(
-                new []{"John", "Smith"},
-                new Design_Patterns.Creational.Prototype.Address("London Road", 123
-            ));
+            var john = new  Design_Patterns.Creational.Prototype.Employee("John", new  Design_Patterns.Creational.Prototype.Address("123 London Road", "London", "UK"));
 
-            var jane = (Design_Patterns.Creational.Prototype.Person)john.Clone();
-            jane.Address.HouseNumber = 321; // oops, John is now at 321
+            //var chris = john;
+            var chris = new  Design_Patterns.Creational.Prototype.Employee(john);
 
-            // this doesn't work
-            //var jane = john;
+            chris.Name = "Chris";
+            Console.WriteLine(john); // oops, john is called chris
+            Console.WriteLine(chris);
 
-            // but clone is typically shallow copy
-            jane.Names[0] = "Jane";
-
-            Console.WriteLine(john);
-            Console.WriteLine(jane);
         }
     }
 }
