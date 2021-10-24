@@ -116,11 +116,17 @@ namespace Design_Patterns.Creational
 
         public void Run_Abstract_Factory_Example()
         {
-            var machine = new HotDrinkMachine();            
-            var drink = machine.MakeDrink(HotDrinkMachine.AvailableDrink.Tea , 100);
-            drink.Consume();
+            //var machine = new HotDrinkMachine();            
+            //var drink = machine.MakeDrink(HotDrinkMachine.AvailableDrink.Tea , 100);
+            //drink.Consume();
 
-            machine.MakeDrink(HotDrinkMachine.AvailableDrink.Coffee , 2000).Consume();
+            //machine.MakeDrink(HotDrinkMachine.AvailableDrink.Coffee , 2000).Consume();
+
+
+
+            var machine = new HotDrinkMachine();
+            machine.MakeDrink(HotDrinkMachine.AvailableDrink.Coffee , 200).Consume();
+            machine.MakeDrink(HotDrinkMachine.AvailableDrink.Tea , 100).Consume();
 
         }
     }
