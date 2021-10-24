@@ -135,9 +135,12 @@ namespace Design_Patterns.Creational
             var john = new  Design_Patterns.Creational.Prototype.Employee("John", new  Design_Patterns.Creational.Prototype.Address("123 London Road", "London", "UK"));
 
             //var chris = john;
-            var chris = new  Design_Patterns.Creational.Prototype.Employee(john);
+            //var chris = new  Design_Patterns.Creational.Prototype.Employee(john);
 
-            chris.Name = "Chris";
+            //chris.Name = "Chris";
+
+            var chris = john.DeepCopy();
+            chris.Address.Country = "Iran" ;
             Console.WriteLine(john); // oops, john is called chris
             Console.WriteLine(chris);
 

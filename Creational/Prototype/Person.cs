@@ -2,16 +2,22 @@ using System;
 
 namespace Design_Patterns.Creational.Prototype
 {
-    public class Address
-  {
-    public string StreetAddress, City, Country;
 
-    public Address(string streetAddress, string city, string country)
+  public interface IPrototype<T>
+  {
+    T DeepCopy();
+  }
+
+    public class Address : IPrototype<Address>
     {
-      StreetAddress = streetAddress ?? throw new ArgumentNullException(paramName: nameof(streetAddress));
-      City = city ?? throw new ArgumentNullException(paramName: nameof(city));
-      Country = country ?? throw new ArgumentNullException(paramName: nameof(country));
-    }
+      public string StreetAddress, City, Country;
+
+      public Address(string streetAddress, string city, string country)
+      {
+        StreetAddress = streetAddress ?? throw new ArgumentNullException(paramName: nameof(streetAddress));
+        City = city ?? throw new ArgumentNullException(paramName: nameof(city));
+        Country = country ?? throw new ArgumentNullException(paramName: nameof(country));
+      }
 
     public Address(Address other)
     {
@@ -20,33 +26,44 @@ namespace Design_Patterns.Creational.Prototype
       Country = other.Country;
     }
 
-    public override string ToString()
-    {
-      return $"{nameof(StreetAddress)}: {StreetAddress}, {nameof(City)}: {City}, {nameof(Country)}: {Country}";
-    }
-  }
+      public override string ToString()
+      {
+        return $"{nameof(StreetAddress)}: {StreetAddress}, {nameof(City)}: {City}, {nameof(Country)}: {Country}";
+      }
 
-  public class Employee
+      public Address DeepCopy()
+      {
+          return new Address(this.StreetAddress , this.City , this.Country);
+      }
+
+    }
+
+  public class Employee : IPrototype<Employee>
   {
-    public string Name;
-    public Address Address;
+      public string Name;
+      public Address Address;
 
-    public Employee(string name, Address address)
-    {
-      Name = name ?? throw new ArgumentNullException(paramName: nameof(name));
-      Address = address ?? throw new ArgumentNullException(paramName: nameof(address));
-    }
+      public Employee(string name, Address address)
+      {
+        Name = name ?? throw new ArgumentNullException(paramName: nameof(name));
+        Address = address ?? throw new ArgumentNullException(paramName: nameof(address));
+      }
 
-    public Employee(Employee other)
-    {
-      Name = other.Name;
-      Address = new Address(other.Address);
-    }
+      public Employee(Employee other)
+      {
+        Name = other.Name;
+        Address = new Address(other.Address);
+      } 
 
-    public override string ToString()
-    {
-      return $"{nameof(Name)}: {Name}, {nameof(Address)}: {Address}";
+      public override string ToString()
+      {
+        return $"{nameof(Name)}: {Name}, {nameof(Address)}: {Address}";
+      }
+
+      public Employee DeepCopy()
+      {
+          return new Employee(Name , Address.DeepCopy());
+      }
     }
-  }
 
 }
