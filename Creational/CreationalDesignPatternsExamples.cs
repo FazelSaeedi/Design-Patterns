@@ -24,7 +24,6 @@ namespace Design_Patterns.Creational
             Console.WriteLine(builder.ToString());
         }
 
-        
         public void Run_Recursive_Generic_Builder()
         {
             var P = Person.New
@@ -95,7 +94,7 @@ namespace Design_Patterns.Creational
             // instead of up method we create a PointFactory Class and use it 
             var point = PointFactory.NewPolarPoint(1.0 , Math.PI / 2);
             Console.WriteLine(point);
-            
+
         }
     }
 }
