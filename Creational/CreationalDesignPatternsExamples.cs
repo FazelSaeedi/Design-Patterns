@@ -8,6 +8,10 @@ using Design_Patterns.Creational.Factories;
 using Design_Patterns.Creational.Factories.Inner_Factory_Method;
 using Design_Patterns.Creational.Abstract_Factory;
 using Design_Patterns.Creational.Prototype.Prototype_inheritance;
+using t = Design_Patterns.Creational.Prototype.Prototype_Serializer;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 
 namespace Design_Patterns.Creational
 {
@@ -164,6 +168,36 @@ namespace Design_Patterns.Creational
             Console.WriteLine(john);
             Console.WriteLine(copy);
 
+        }
+
+        public void Run_Prototype_Serializer_Example()
+        {
+            var foo = new Design_Patterns.Creational.Prototype.Prototype_Serializer.Foo {Stuff = 42, Whatever = "abc"};
+
+            //Foo foo2 = foo.DeepCopy(); // crashes without [Serializable]
+            Design_Patterns.Creational.Prototype.Prototype_Serializer.Foo foo2 = foo.DeepCopyXml();
+
+            foo2.Whatever = "xyz";
+            Console.WriteLine(foo);
+            Console.WriteLine(foo2);
+            
+        }
+    }
+
+
+    // this use for Run_Prototype_Serializer_Example();
+    public static class ExtensionMethodss
+    {
+
+        public static T DeepCopyXml<T>(this T self)
+        {
+            using (var ms = new MemoryStream())
+            {
+                XmlSerializer s = new XmlSerializer(typeof(T));
+                s.Serialize(ms, self);
+                ms.Position = 0;
+                return (T) s.Deserialize(ms);
+            }
         }
     }
 }

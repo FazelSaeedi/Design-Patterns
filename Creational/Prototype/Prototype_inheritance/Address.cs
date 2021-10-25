@@ -13,7 +13,7 @@ namespace Design_Patterns.Creational.Prototype.Prototype_inheritance
             }
         }
   
-       public class Address : IDeepCopyable<Address>
+        public class Address : IDeepCopyable<Address>
        {
            public string StreetName;
            public int HouseNumber;
@@ -39,9 +39,10 @@ namespace Design_Patterns.Creational.Prototype.Prototype_inheritance
                 target.StreetName = StreetName;
                 target.HouseNumber = HouseNumber;
            }
+
        }
 
-      public class Person : IDeepCopyable<Person>
+        public class Person : IDeepCopyable<Person>
     {
         public string[] Names;
         public Address Address;
@@ -62,14 +63,16 @@ namespace Design_Patterns.Creational.Prototype.Prototype_inheritance
         return $"{nameof(Names)}: {string.Join(",", Names)}, {nameof(Address)}: {Address}";
         }
 
+        
         public virtual void CopyTo(Person target)
         {
             target.Names = (string[]) Names.Clone();
             target.Address = Address.DeepCopy();
         }
+
     }
   
-      public class Employee : Person, IDeepCopyable<Employee>
+        public class Employee : Person, IDeepCopyable<Employee>
     {
         public int Salary;
 
