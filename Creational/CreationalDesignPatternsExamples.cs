@@ -7,6 +7,7 @@ using Design_Patterns.Creational.Builder.Stepwise_Builder;
 using Design_Patterns.Creational.Factories;
 using Design_Patterns.Creational.Factories.Inner_Factory_Method;
 using Design_Patterns.Creational.Abstract_Factory;
+using Design_Patterns.Creational.Prototype.Prototype_inheritance;
 
 namespace Design_Patterns.Creational
 {
@@ -28,7 +29,7 @@ namespace Design_Patterns.Creational
 
         public void Run_Recursive_Generic_Builder()
         {
-            var P = Person.New
+            var P = Design_Patterns.Creational.Builder.Recursive_Generic_Builder.Person.New
                     .Called("fazel")
                     .WorksAsA("USA")
                     .Phone("090366285660")
@@ -143,6 +144,25 @@ namespace Design_Patterns.Creational
             chris.Address.Country = "Iran" ;
             Console.WriteLine(john); // oops, john is called chris
             Console.WriteLine(chris);
+
+        }
+
+        public void Run_Prototype_Inheritance_Example()
+        {
+ 
+
+            var john = new Design_Patterns.Creational.Prototype.Prototype_inheritance.Employee();
+            john.Names = new[] {"John", "Doe"};
+            john.Address = new Design_Patterns.Creational.Prototype.Prototype_inheritance.Address {HouseNumber = 123, StreetName = "London Road"};
+            john.Salary = 321000;
+            var copy = john.DeepCopy();
+
+            copy.Names[1] = "Smith";
+            copy.Address.HouseNumber++;
+            copy.Salary = 123000;
+            
+            Console.WriteLine(john);
+            Console.WriteLine(copy);
 
         }
     }
