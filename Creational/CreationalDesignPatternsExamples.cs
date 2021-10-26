@@ -131,7 +131,10 @@ namespace Design_Patterns.Creational
 
             var machine = new HotDrinkMachine();
             machine.MakeDrink(HotDrinkMachine.AvailableDrink.Coffee , 200).Consume();
-            machine.MakeDrink(HotDrinkMachine.AvailableDrink.Tea , 100).Consume();
+
+            var tea = machine.MakeDrink(HotDrinkMachine.AvailableDrink.Tea , 100);
+            // here we can use from tea object
+            tea.Consume();
 
         }
 

@@ -8,14 +8,14 @@ namespace Design_Patterns.Creational.Builder.Functional_Builder
         where TSelf : FunctionalBuilder<TSubject , TSelf>
         where TSubject : new()
     {
-           private readonly List<Func<Person , Person>> actions =
-              new List<Func<Person, Person>>();
+           private readonly List<Func<TSubject , TSubject>> actions =
+              new List<Func<TSubject, TSubject>>();
  
-          public TSelf Do(Action<Person> action) => AddAction(action);
+          public TSelf Do(Action<TSubject> action) => AddAction(action);
  
-          public Person Build() 
-              => actions.Aggregate(new Person() , (p , f) => f(p));
-          private TSelf AddAction(Action<Person> action)
+          public TSubject Build() 
+              => actions.Aggregate(new TSubject() , (p , f) => f(p));
+          private TSelf AddAction(Action<TSubject> action)
           {
               actions.Add( p => 
               {
