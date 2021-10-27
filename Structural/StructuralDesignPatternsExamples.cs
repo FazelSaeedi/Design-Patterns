@@ -1,5 +1,6 @@
 ﻿using Design_Patterns.Structural.Adapter;
 using Design_Patterns.Structural.Adapter.Adapter_No_Cashing;
+using Design_Patterns.Structural.Adapter.Generic_Value_Adapter;
 using Design_Patterns.Structural.Bridge;
 using Design_Patterns.Structural.Composite;
 using Design_Patterns.Structural.Decorator;
@@ -180,7 +181,6 @@ namespace Design_Patterns.Structural
             Draw();
             Draw();
         }
-
         private static void Draw()
         {
             List<VectorObject> vectorObjects = new List<VectorObject>
@@ -198,5 +198,19 @@ namespace Design_Patterns.Structural
                 }
             }
         }
+   
+
+        public void Run_Generic_value_Adapter()
+        {
+            var v = new Vector2i(1, 2);
+             v[0] = 0;
+      
+             var vv = new Vector2i(3, 2);
+
+             var result = v + vv;
+
+             Vector3f u = Vector3f.Create(3.5f, 2.2f, 1);
+        }
+
     }
 }
