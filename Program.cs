@@ -22,6 +22,8 @@ namespace Design_Patterns
             // structuralDesignPatterns.Run_Composite_Example();
             structuralDesignPatterns.Run_Adapter_No_Cashing_Example();
             structuralDesignPatterns.Run_Generic_value_Adapter();
+            structuralDesignPatterns.Run_Dependency_Injection_Adapter_Example();
+            structuralDesignPatterns.Run_Bridge_Book_Example();
 
             // Behavioral design patterns -----------------------------------------------
 

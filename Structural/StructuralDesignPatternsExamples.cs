@@ -1,5 +1,6 @@
 ﻿using Design_Patterns.Structural.Adapter;
 using Design_Patterns.Structural.Adapter.Adapter_No_Cashing;
+using Design_Patterns.Structural.Adapter.DI_Adapter;
 using Design_Patterns.Structural.Adapter.Generic_Value_Adapter;
 using Design_Patterns.Structural.Bridge;
 using Design_Patterns.Structural.Composite;
@@ -12,6 +13,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Features.Metadata;
+using Design_Patterns.Structural.Bridge.Bridge_BookExample;
 
 namespace Design_Patterns.Structural
 {
@@ -212,5 +216,57 @@ namespace Design_Patterns.Structural
              Vector3f u = Vector3f.Create(3.5f, 2.2f, 1);
         }
 
+        public void Run_Dependency_Injection_Adapter_Example()
+        {
+            // for each ICommand, a ToolbarButton is created to wrap it, and all
+            // are passed to the editor
+            var b = new ContainerBuilder();
+            b.RegisterType<OpenCommand>()
+                .As<ICommand>()
+                .WithMetadata("Name", "Open");
+            b.RegisterType<SaveCommand>()
+                .As<ICommand>()
+                .WithMetadata("Name", "Save");
+            //b.RegisterType<Button>();
+            b.RegisterAdapter<ICommand, Button>(cmd => new Button(cmd, ""));
+            b.RegisterAdapter<Meta<ICommand>, Button>(cmd =>
+                new Button(cmd.Value, (string)cmd.Metadata["Name"]));
+            b.RegisterType<Editor>();
+            using (var c = b.Build())
+            {
+                var editor = c.Resolve<Editor>();
+                editor.ClickAll();
+
+                // problem: only one button
+
+                foreach (var btn in editor.Buttons)
+                btn.PrintMe();
+            }
+
+        }
+
+        public void Run_Bridge_Book_Example()
+        {
+            var raster = new RasterRenderer();
+            var vector = new VectorRenderer();
+            var circle1 = new Circle(raster, 5);
+            circle1.Draw();
+            circle1.Resize(2);
+            circle1.Draw();
+
+            var cb = new ContainerBuilder();
+            cb.RegisterType<VectorRenderer>().As<IRenderer>();
+            cb.Register((c, p) => new Circle(c.Resolve<IRenderer>(),
+                p.Positional<float>(0)));
+            using (var c = cb.Build())
+            {
+                var circle = c.Resolve<Circle>(
+                new PositionalParameter(0, 5.0f)
+                );
+                circle.Draw();
+                circle.Resize(2);
+                circle.Draw();
+            }
+        }
     }
 }
