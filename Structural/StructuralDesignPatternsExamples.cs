@@ -1,4 +1,5 @@
 ﻿using Design_Patterns.Structural.Adapter;
+using Design_Patterns.Structural.Adapter.Adapter_No_Cashing;
 using Design_Patterns.Structural.Bridge;
 using Design_Patterns.Structural.Composite;
 using Design_Patterns.Structural.Decorator;
@@ -166,6 +167,36 @@ namespace Design_Patterns.Structural
                  // }
             }
             Console.ReadKey();
+        }
+    
+        // the interface we have
+        public static void DrawPoint(Point p)
+        {
+            Console.Write(".");
+        }
+
+        public void Run_Adapter_No_Cashing_Example()
+        {
+            Draw();
+            Draw();
+        }
+
+        private static void Draw()
+        {
+            List<VectorObject> vectorObjects = new List<VectorObject>
+           {
+               new VectorRectangle(1, 1, 10, 10),
+               new VectorRectangle(3, 3, 6, 6)
+           };
+
+            foreach (var vo in vectorObjects)
+            {
+                foreach (var line in vo)
+                {
+                    var adapter = new LineToPointAdapter(line);
+                    adapter.ToList().ForEach(DrawPoint);
+                }
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Design_Patterns
             // structuralDesignPatterns.Run_Proxy_Exampple();
             // structuralDesignPatterns.Run_Adapter_Example();
             // structuralDesignPatterns.Run_Composite_Example();
+            structuralDesignPatterns.Run_Adapter_No_Cashing_Example();
 
             // Behavioral design patterns -----------------------------------------------
 
