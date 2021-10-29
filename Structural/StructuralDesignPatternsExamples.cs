@@ -16,6 +16,8 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Features.Metadata;
 using Design_Patterns.Structural.Bridge.Bridge_BookExample;
+using Design_Patterns.Structural.FlyWeight;
+using JetBrains.dotMemoryUnit;
 
 namespace Design_Patterns.Structural
 {
@@ -271,6 +273,38 @@ namespace Design_Patterns.Structural
                 circle.Resize(2);
                 circle.Draw();
             }
+        }
+    
+        public void Run_FlyWeight_Repeating_User_Names()
+        {
+                // The client code usually creates a bunch of pre-populated
+                // flyweights in the initialization stage of the application.
+                var factory = new FlyweightFactory(
+                    new Car { Company = "Chevrolet", Model = "Camaro2018", Color = "pink" },
+                    new Car { Company = "Mercedes Benz", Model = "C300", Color = "black" },
+                    new Car { Company = "Mercedes Benz", Model = "C500", Color = "red" },
+                    new Car { Company = "BMW", Model = "M5", Color = "red" },
+                    new Car { Company = "BMW", Model = "X6", Color = "white" }
+                );
+                factory.listFlyweights();
+
+                FlyweightFactory.addCarToPoliceDatabase(factory, new Car {
+                    Number = "CL234IR",
+                    Owner = "James Doe",
+                    Company = "BMW",
+                    Model = "M5",
+                    Color = "red"
+                });
+
+                FlyweightFactory.addCarToPoliceDatabase(factory, new Car {
+                    Number = "CL234IR",
+                    Owner = "James Doe",
+                    Company = "BMW",
+                    Model = "X1",
+                    Color = "red"
+                });
+
+                factory.listFlyweights();
         }
     }
 }
