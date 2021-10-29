@@ -92,7 +92,11 @@ namespace Design_Patterns.Structural
         public void Run_Facade_Example()
         {
             Console.WriteLine("Facade pattern demo");
-            CarFacade carFacade = new CarFacade();
+            var body = new Body();
+            var engine = new Engine();
+            var tyre = new Tyre();
+            var accessories = new Accessories();
+            CarFacade carFacade = new CarFacade(body , engine , tyre , accessories );
             carFacade.AssembleCar();
         }
 

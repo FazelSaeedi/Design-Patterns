@@ -99,7 +99,8 @@ namespace Design_Patterns.Creational.Prototype.Prototype_inheritance
             public static T DeepCopy<T>(this T person)
             where T : Person, new()
             {
-                return ((IDeepCopyable<T>)person).DeepCopy();
+               var s =   ((IDeepCopyable<T>)person).DeepCopy();
+                return s ;
             }
         }
 

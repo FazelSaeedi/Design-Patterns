@@ -14,12 +14,12 @@ namespace Design_Patterns
 
             var structuralDesignPatterns = new StructuralDesignPatternsExamples();
 
-            // structuralDesignPatterns.Run_Decorator_Example();
-            // structuralDesignPatterns.Run_Bridge_Example();
-            // structuralDesignPatterns.Run_Facade_Example();
-            // structuralDesignPatterns.Run_Proxy_Exampple();
-            // structuralDesignPatterns.Run_Adapter_Example();
-            // structuralDesignPatterns.Run_Composite_Example();
+            structuralDesignPatterns.Run_Decorator_Example();
+            structuralDesignPatterns.Run_Bridge_Example();
+            structuralDesignPatterns.Run_Facade_Example();
+            structuralDesignPatterns.Run_Proxy_Exampple();
+            structuralDesignPatterns.Run_Adapter_Example();
+            structuralDesignPatterns.Run_Composite_Example();
             structuralDesignPatterns.Run_Adapter_No_Cashing_Example();
             structuralDesignPatterns.Run_Generic_value_Adapter();
             structuralDesignPatterns.Run_Dependency_Injection_Adapter_Example();

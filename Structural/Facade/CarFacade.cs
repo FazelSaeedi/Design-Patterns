@@ -15,12 +15,12 @@ namespace Design_Patterns.Structural.Facade
         private Accessories accessories;
 
 
-        public CarFacade()
+        public CarFacade(Body body, Engine engine, Tyre tyre, Accessories accessories)
         {
-            body = new Body();
-            engine = new Engine();
-            tyre = new Tyre();
-            accessories = new Accessories();
+            this.body = body;
+            this.engine = engine;
+            this.tyre = tyre;
+            this.accessories = accessories;
         }
 
 
