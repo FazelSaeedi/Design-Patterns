@@ -18,6 +18,7 @@ using Autofac.Features.Metadata;
 using Design_Patterns.Structural.Bridge.Bridge_BookExample;
 using Design_Patterns.Structural.FlyWeight;
 using JetBrains.dotMemoryUnit;
+using Design_Patterns.Structural.FlyWeight.Text_Formatting_FlyWeight;
 
 namespace Design_Patterns.Structural
 {
@@ -305,6 +306,17 @@ namespace Design_Patterns.Structural
                 });
 
                 factory.listFlyweights();
+        }
+   
+        public void Run_Text_Formatting_FlyWeight_Example()
+        {
+            var ft = new FormattedText("This is a brave new world");
+            ft.Capitalize(10, 15);
+            Console.WriteLine(ft);
+
+            var bft = new BetterFormattedText("This is a brave new world");
+            bft.GetRange(10, 15).Capitalize = true;
+            Console.WriteLine(bft);
         }
     }
 }

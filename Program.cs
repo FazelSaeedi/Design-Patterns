@@ -25,6 +25,7 @@ namespace Design_Patterns
             structuralDesignPatterns.Run_Dependency_Injection_Adapter_Example();
             structuralDesignPatterns.Run_Bridge_Book_Example();
             structuralDesignPatterns.Run_FlyWeight_Repeating_User_Names();
+            structuralDesignPatterns.Run_Text_Formatting_FlyWeight_Example();
 
             // Behavioral design patterns -----------------------------------------------
 
