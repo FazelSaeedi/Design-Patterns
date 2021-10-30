@@ -33,7 +33,7 @@ namespace Design_Patterns
 
             // behavioralDesignPatterns.Run_Observer_Example();
             // behavioralDesignPatterns.Run_Strategy_Example();
-            
+            behavioralDesignPatterns.Run_Chain_of_Responsibility_Example();
 
             // Creational Design Patterns -----------------------------------------------
 

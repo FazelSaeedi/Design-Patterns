@@ -1,4 +1,5 @@
-﻿using Design_Patterns.Behavioral.Observer;
+﻿using Design_Patterns.Behavioral.ChainOfResponsibility;
+using Design_Patterns.Behavioral.Observer;
 using Design_Patterns.Behavioral.Strategy;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,27 @@ namespace Design_Patterns.Behavioral
 
             Console.WriteLine(BitConverter.ToString(Md5Hash));
             Console.WriteLine(BitConverter.ToString(SHA256Hash));
+        }
+    
+        public void Run_Chain_of_Responsibility_Example()
+        {
+
+                var goblin = new Creature("Goblin", 2, 2);
+                Console.WriteLine(goblin);
+                
+                var root = new CreatureModifier(goblin);
+
+                root.Add(new NoBonusesModifier(goblin));
+
+                Console.WriteLine("Let's double goblin's attack...");
+                root.Add(new DoubleAttackModifier(goblin));
+
+                Console.WriteLine("Let's increase goblin's defense");
+                root.Add(new IncreaseDefenseModifier(goblin));
+
+                // eventually...
+                root.Handle();
+                Console.WriteLine(goblin);
         }
     }
 }
