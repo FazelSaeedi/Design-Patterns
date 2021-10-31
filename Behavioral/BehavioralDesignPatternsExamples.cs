@@ -1,4 +1,5 @@
 ﻿using Design_Patterns.Behavioral.ChainOfResponsibility;
+using Design_Patterns.Behavioral.Command;
 using Design_Patterns.Behavioral.Observer;
 using Design_Patterns.Behavioral.Strategy;
 using System;
@@ -95,6 +96,21 @@ namespace Design_Patterns.Behavioral
             });
 
 
+
+        }
+    
+        public void Run_Command_Example()
+        {
+            var bank = new BankAccount();
+            var commands = new List<BankAccountCommand>()
+            {
+                new BankAccountCommand(bank , BankAccountCommand.Action.Withdraw , 100),
+                new BankAccountCommand(bank , BankAccountCommand.Action.Deposit , 100),
+                new BankAccountCommand(bank , BankAccountCommand.Action.Withdraw , 100 ),
+            };
+
+            commands.ForEach(x => x.Call());
+           // commands.ForEach(x => x.Undo());
 
         }
     }
