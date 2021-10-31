@@ -36,6 +36,7 @@ namespace Design_Patterns
             behavioralDesignPatterns.Run_Chain_of_Responsibility_Example();
             behavioralDesignPatterns.Run_Chain_of_Responsibility_Validation_Example();
             behavioralDesignPatterns.Run_Command_Example();
+            behavioralDesignPatterns.Run_Handmade_interpreter_Example();
 
             // Creational Design Patterns -----------------------------------------------
 

@@ -1,5 +1,6 @@
 ﻿using Design_Patterns.Behavioral.ChainOfResponsibility;
 using Design_Patterns.Behavioral.Command;
+using Design_Patterns.Behavioral.Interpreter.Handmade_interpreter;
 using Design_Patterns.Behavioral.Observer;
 using Design_Patterns.Behavioral.Strategy;
 using System;
@@ -112,6 +113,16 @@ namespace Design_Patterns.Behavioral
             commands.ForEach(x => x.Call());
            // commands.ForEach(x => x.Undo());
 
+        }
+
+        public void Run_Handmade_interpreter_Example()
+        {
+             var input = "(13+4)-(12+1)";
+             var tokens = Demo.Lex(input);
+             Console.WriteLine(string.Join("\t", tokens));
+
+             var parsed = Demo.Parse(tokens);
+             Console.WriteLine($"{input} = {parsed.Value}");
         }
     }
 }
