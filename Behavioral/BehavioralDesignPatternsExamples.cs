@@ -67,5 +67,35 @@ namespace Design_Patterns.Behavioral
                 root.Handle();
                 Console.WriteLine(goblin);
         }
+ 
+        public void Run_Chain_of_Responsibility_Validation_Example()
+        {
+            var person = new Design_Patterns.Behavioral.ChainOfResponsibility.Chain_Validation.Person()
+            {
+                Age = 10 , 
+                Income = 15 ,
+                Name = "Fazel"
+            };
+
+            var reuest = new Design_Patterns.Behavioral.ChainOfResponsibility.Chain_Validation.Request()
+            {
+                Data = person
+            };
+
+            var maxAgeHandler = new Design_Patterns.Behavioral.ChainOfResponsibility.Chain_Validation.MaxAgeHandler();
+            var maxNameLenghtHandler = new Design_Patterns.Behavioral.ChainOfResponsibility.Chain_Validation.MaxAgeHandler();
+            var maxIcomeHandler = new Design_Patterns.Behavioral.ChainOfResponsibility.Chain_Validation.MaxAgeHandler();
+
+            maxAgeHandler.SetNextHandler(maxNameLenghtHandler);
+            maxNameLenghtHandler.SetNextHandler(maxIcomeHandler);
+            maxIcomeHandler.Process(reuest);
+            reuest.ValidationMessages.ForEach( d => 
+            {
+                Console.WriteLine(d);
+            });
+
+
+
+        }
     }
 }
