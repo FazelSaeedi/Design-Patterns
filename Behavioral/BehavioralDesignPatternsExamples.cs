@@ -152,5 +152,27 @@ namespace Design_Patterns.Behavioral
                 Console.WriteLine(element);
             }
         }
+    
+        public void Run_Mediator_Chatroom_Example()
+        {
+            
+        
+               var room = new Design_Patterns.Behavioral.Mediator.ChatRoom();
+
+                var john = new Design_Patterns.Behavioral.Mediator.Person("John");
+                var jane = new Design_Patterns.Behavioral.Mediator.Person("Jane");
+
+                room.Join(john);
+                room.Join(jane);
+
+                john.Say("hi room");
+                jane.Say("oh, hey john");
+
+                var simon = new Design_Patterns.Behavioral.Mediator.Person("Simon");
+                room.Join(simon);
+                simon.Say("hi everyone!");
+
+                jane.PrivateMessage("Simon", "glad you could join us!");
+        }
     }
 }

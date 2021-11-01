@@ -38,6 +38,7 @@ namespace Design_Patterns
             behavioralDesignPatterns.Run_Command_Example();
             behavioralDesignPatterns.Run_Handmade_interpreter_Example();
             behavioralDesignPatterns.Run_Iterator_Example();
+            behavioralDesignPatterns.Run_Mediator_Chatroom_Example();
 
             // Creational Design Patterns -----------------------------------------------
 
