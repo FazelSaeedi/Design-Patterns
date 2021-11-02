@@ -40,6 +40,7 @@ namespace Design_Patterns
             behavioralDesignPatterns.Run_Iterator_Example();
             behavioralDesignPatterns.Run_Mediator_Chatroom_Example();
             behavioralDesignPatterns.Run_Memento_Bank_Example();
+            behavioralDesignPatterns.Run_NullObjedt_Example();
 
             // Creational Design Patterns -----------------------------------------------
 

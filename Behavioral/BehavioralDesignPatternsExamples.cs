@@ -1,4 +1,5 @@
-﻿using Design_Patterns.Behavioral.ChainOfResponsibility;
+﻿using System.Security.Cryptography;
+using Design_Patterns.Behavioral.ChainOfResponsibility;
 using Design_Patterns.Behavioral.Command;
 using Design_Patterns.Behavioral.Interpreter.Handmade_interpreter;
 using Design_Patterns.Behavioral.Iterator;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Design_Patterns.Behavioral.NullObject;
 
 namespace Design_Patterns.Behavioral
 {
@@ -103,7 +105,7 @@ namespace Design_Patterns.Behavioral
     
         public void Run_Command_Example()
         {
-            var bank = new BankAccount();
+            var bank = new Design_Patterns.Behavioral.Command.BankAccount();
             var commands = new List<BankAccountCommand>()
             {
                 new BankAccountCommand(bank , BankAccountCommand.Action.Withdraw , 100),
@@ -201,5 +203,20 @@ namespace Design_Patterns.Behavioral
                  ba.Redo();
                  Console.WriteLine($"Redo 2: {ba}");
         }    
+ 
+        public void Run_NullObjedt_Example()
+        {
+                  //var log = new ConsoleLog();
+                    //ILog log = null;
+                    //var log = new NullLog();
+                    var log = Null<ILog>.Instance;
+                    var ba = new Design_Patterns.Behavioral.NullObject.BankAccount(log);
+                    ba.Deposit(100);
+                    ba.Withdraw(200);
+        }
+        public interface IMyInterface
+        {
+            public string s{get;set;}
+        }
     }
 }
